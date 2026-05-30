@@ -1,330 +1,329 @@
 /* =========================================================
-   WP Latest Notifications — Modern SaaS Admin Styles
+   WP Latest Notifications — Modern Frontend CSS
    ========================================================= */
 
-/* Main layout container */
-.wpnotif-wrap {
-    max-width: 1400px;
-    padding: 1.5rem 2rem 2rem 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+/* Core Variables mapped to backend choices */
+:root {
+    --wpnotif-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --wpnotif-base-size: 14px;
+    --wpnotif-txt-main: #1e293b;
+    --wpnotif-brand-primary: #2563eb;
+    --wpnotif-accent-red: #ef4444;
+    --wpnotif-bg-card: #ffffff;
+    --wpnotif-border-light: #f1f5f9;
 }
 
-.wpnotif-wrap h1 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Re-establishing the clean 2-column dashboard layout grid */
-.wpnotif-grid {
-    display: grid;
-    grid-template-columns: 460px 1fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-@media (max-width: 1100px) {
-    .wpnotif-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Beautiful Modern Cards */
-.wpnotif-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-}
-
-.wpnotif-card h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #1e293b;
-    margin: 0 0 1.5rem 0;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-/* Sleek Form Fields */
-.wpnotif-field {
-    margin-bottom: 1.25rem;
-}
-
-.wpnotif-field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: #475569;
-    margin-bottom: 0.5rem;
-}
-
-.wpnotif-field .required {
-    color: #ef4444;
-    margin-left: 2px;
-}
-
-/* Input Fields Overhaul */
-.wpnotif-field input[type=text],
-.wpnotif-field input[type=url],
-.wpnotif-field input[type=date] {
-    width: 100%;
-    height: 40px;
-    padding: 0 12px;
-    font-size: 13px;
-    color: #334155;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background: #f8fafc;
+/* Base Wrapper Reset[cite: 3] */
+.wpnotif-full-wrap *,
+.wpnotif-widget-wrap * {
     box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
 }
 
-.wpnotif-field input:focus {
-    border-color: #3b82f6;
-    background: #ffffff;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
-}
-
-.wpnotif-field .description {
-    font-size: 12px;
-    color: #64748b;
-    margin-top: 0.5rem;
-    line-height: 1.4;
-}
-
-/* Aligned Actions and Buttons */
-.wpnotif-link-row,
-.wpnotif-doc-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.wpnotif-link-row input {
-    flex: 1;
-}
-
-/* Standardizing the Secondary / Utility Buttons */
-.wpnotif-card .button:not(.button-primary) {
-    height: 40px;
-    padding: 0 14px;
-    background: #ffffff;
+.wpnotif-full-wrap {
+    width: 100%;
+    overflow-x: auto;
+    font-family: var(--wpnotif-font-stack) !important;
+    font-size: var(--wpnotif-base-size) !important;
+    color: var(--wpnotif-txt-main) !important;
+    background: var(--wpnotif-bg-card);
+    border-radius: 12px;
     border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    color: #475569;
-    font-weight: 500;
-    font-size: 13px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    transition: all 0.15s ease;
-}
-
-.wpnotif-card .button:not(.button-primary):hover {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-    color: #1e293b;
-}
-
-/* Document Upload Area Customizations */
-.wpnotif-doc-preview {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 0.75rem;
-    padding: 10px 14px;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #2563eb;
-    font-weight: 500;
-}
-
-.wpnotif-doc-preview .dashicons {
-    font-size: 18px;
-    width: 18px;
-    height: 18px;
-    color: #2563eb;
-}
-
-/* Main Call-to-Action Primary Button */
-.wpnotif-submit-row {
-    margin-top: 1.5rem;
-}
-
-.wpnotif-submit-row .button-primary {
-    height: 42px;
-    padding: 0 20px;
-    background: #2563eb !important;
-    border: none !important;
-    border-radius: 8px !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    text-shadow: none !important;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2), 0 2px 4px -2px rgba(37, 99, 235, 0.2) !important;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.15s ease;
-}
-
-.wpnotif-submit-row .button-primary:hover {
-    background: #1d4ed8 !important;
-    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3), 0 4px 6px -4px rgba(37, 99, 235, 0.3) !important;
-    transform: translateY(-1px);
-}
-
-/* Admin Notification List Container */
-.wpnotif-count {
-    font-size: 14px;
-    font-weight: 500;
-    color: #64748b;
-    margin-left: 4px;
-}
-
-.wpnotif-admin-list {
-    max-height: 600px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-right: 6px;
-}
-
-/* Styling the item rows like modern list group items */
-.wpnotif-admin-row {
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 16px;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-    transition: all 0.2s ease;
-}
-
-.wpnotif-admin-row:hover {
-    border-color: #cbd5e1;
+    padding: 12px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-.wpnotif-admin-row.is-new {
-    border-left: 4px solid #ef4444;
-    background: #fff8f8;
-}
-
-/* Row Meta Badges and Dates */
-.wpnotif-admin-row-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.wpnotif-date {
-    font-size: 12px;
-    color: #64748b;
-    font-weight: 600;
-}
-
-.wpnotif-pill {
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.wpnotif-pill.pdf {
-    background: #dcfce7;
-    color: #15803d;
-}
-
-.wpnotif-pill.link {
-    background: #dbeafe;
-    color: #1d4ed8;
-}
-
-.wpnotif-admin-row-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: #0f172a;
+/* Modern Minimalist Table Framework[cite: 3] */
+.wpnotif-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    font-size: var(--wpnotif-base-size);
     line-height: 1.5;
 }
 
-/* Inline row item action buttons */
-.wpnotif-admin-row-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 4px;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 12px;
+.wpnotif-table thead tr {
+    background: transparent;
 }
 
-.wpnotif-admin-row-actions .button {
-    height: 30px !important;
-    padding: 0 12px !important;
-    font-size: 12px !important;
-    border-radius: 6px !important;
-    line-height: 28px !important;
-}
-
-.wpnotif-admin-row-actions .button-link-delete {
-    color: #ef4444 !important;
-}
-
-.wpnotif-admin-row-actions .button-link-delete:hover {
-    background: #fef2f2 !important;
-    border-color: #fca5a5 !important;
-}
-
-/* Elegant Red Separator Design for New Items */
-.wpnotif-new-sep {
-    text-align: center;
-    position: relative;
-    margin: 1rem 0;
-}
-
-.wpnotif-new-sep::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #ef4444;
-    opacity: 0.2;
-}
-
-.wpnotif-new-sep span {
-    position: relative;
-    background: #ffffff;
-    padding: 4px 12px;
+.wpnotif-table thead th {
+    padding: 14px 16px;
     font-size: 11px;
     font-weight: 700;
-    color: #ef4444;
-    letter-spacing: 0.05em;
-    border: 1px solid #fca5a5;
-    border-radius: 20px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    text-align: left;
+    border-bottom: 2px solid #f1f5f9;
 }
 
-.wpnotif-empty {
+/* Card Row Styles[cite: 3] */
+.wpnotif-table tbody .wpnotif-row {
+    background: #ffffff;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wpnotif-table tbody .wpnotif-row:hover {
+    transform: translateY(-1px);
+    background: #f8fafc;
+}
+
+.wpnotif-table td {
+    padding: 16px;
+    vertical-align: middle;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.wpnotif-table td:first-child {
+    border-left: 1px solid #f1f5f9;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.wpnotif-table td:last-child {
+    border-right: 1px solid #f1f5f9;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Highlighted New Rows[cite: 3] */
+.wpnotif-table tbody .wpnotif-row.wpnotif-is-new {
+    background: #fff8f8;
+}
+
+.wpnotif-table tbody .wpnotif-row.wpnotif-is-new td:first-child {
+    border-left: 4px solid var(--wpnotif-accent-red);
+}
+
+/* Typography elements[cite: 3] */
+.wpnotif-col-sno {
+    width: 60px;
+    font-size: 12px;
+    font-weight: 700;
     color: #94a3b8;
-    font-size: 14px;
-    padding: 2rem 0;
     text-align: center;
+}
+
+.wpnotif-title-link {
+    color: var(--wpnotif-txt-main);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+}
+
+.wpnotif-title-link:hover {
+    color: var(--wpnotif-brand-primary);
+}
+
+.wpnotif-ext-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+}
+
+.wpnotif-date-chip {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Modern Pill Buttons[cite: 3] */
+.wpnotif-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #ffffff;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.wpnotif-dl-btn:hover {
+    background: var(--wpnotif-brand-primary);
+    border-color: var(--wpnotif-brand-primary);
+    color: #ffffff;
+}
+
+.wpnotif-dl-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Elegant Red Dividers[cite: 3] */
+.wpnotif-new-divider-row td {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.wpnotif-new-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.wpnotif-new-divider::before,
+.wpnotif-new-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--wpnotif-accent-red);
+    opacity: .2;
+}
+
+.wpnotif-new-badge {
+    font-size: 10px;
+    font-weight: 800;
+    background: var(--wpnotif-accent-red);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: .08em;
+}
+
+/* Pagination Bar Styles */
+.wpnotif-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.wpnotif-page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    text-decoration: none;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.wpnotif-page-link:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.wpnotif-page-link.active {
+    color: #ffffff !important;
+    background: var(--wpnotif-brand-primary) !important;
+    border-color: var(--wpnotif-brand-primary) !important;
+}
+
+/* =====================================================================
+   SIDEBAR WIDGET UI PACK[cite: 3]
+   ===================================================================== */
+.wpnotif-widget-wrap {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.wpnotif-widget-header {
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.wpnotif-widget-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.wpnotif-widget-row {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.15s;
+}
+
+.wpnotif-widget-row:hover {
+    background: #f8fafc;
+}
+
+.wpnotif-widget-row.wpnotif-is-new {
+    border-left: 3px solid var(--wpnotif-accent-red);
+}
+
+.wpnotif-widget-sno {
+    font-size: 11px;
+    font-weight: 700;
+    color: #cbd5e1;
+    text-align: center;
+}
+
+.wpnotif-widget-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wpnotif-widget-link {
+    font-weight: 600;
+    color: var(--wpnotif-txt-main);
+    text-decoration: none;
+}
+
+.wpnotif-widget-link:hover {
+    color: var(--wpnotif-brand-primary);
+}
+
+.wpnotif-widget-date {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.wpnotif-widget-sep {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #fff8f8;
+}
+
+.wpnotif-widget-sep::before,
+.wpnotif-widget-sep::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--wpnotif-accent-red);
+    opacity: 0.15;
+}
+
+.wpnotif-widget-sep span {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--wpnotif-accent-red);
+    letter-spacing: 0.05em;
 }
