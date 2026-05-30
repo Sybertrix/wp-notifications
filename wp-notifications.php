@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Latest Notifications
- * Plugin URI:  https://360digitalmarketerjay.in/wp-notifications
+ * Plugin URI:  https://360digitalmarketerjay.in/latest-notificstion-board/
  * Description: Scrollable notification list with NEW badge, hyperlink & document/PDF support. Full-page 3-column shortcode + 2-column sidebar widget.
  * Version:     1.0.1
  * Author:      Jayant Mallick
