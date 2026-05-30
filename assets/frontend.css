@@ -1,0 +1,240 @@
+/* =========================================================
+   WP Latest Notifications — Frontend Styles  v1.0.1
+   =========================================================
+   NOTE: Row-level inline styles in the PHP are the PRIMARY
+   layout source for the widget. These classes augment and
+   override for hover states, scrollbars, and theming.
+   ========================================================= */
+
+/* ---- Shared ---- */
+.wpnotif-full-wrap *,
+.wpnotif-widget-wrap * { box-sizing: border-box; }
+
+/* =====================================================================
+   FULL-PAGE TABLE  [wp_notifications]
+   ===================================================================== */
+.wpnotif-full-wrap {
+    width: 100%;
+    overflow-x: auto;
+    font-family: inherit;
+}
+
+.wpnotif-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.5;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.wpnotif-table thead tr {
+    background: #f7f7f7;
+    border-bottom: 2px solid #e0e0e0;
+}
+.wpnotif-table thead th {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    text-align: left;
+}
+.wpnotif-table tbody .wpnotif-row {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background .1s;
+}
+.wpnotif-table tbody .wpnotif-row:last-child { border-bottom: none; }
+.wpnotif-table tbody .wpnotif-row:hover { background: #fafafa; }
+.wpnotif-table tbody .wpnotif-row.wpnotif-is-new {
+    background: #fff5f5;
+    border-left: 3px solid #e24b4a;
+}
+.wpnotif-table tbody .wpnotif-row.wpnotif-is-new:hover { background: #fff0f0; }
+.wpnotif-table td { padding: 12px 16px; vertical-align: middle; }
+
+.wpnotif-col-sno {
+    width: 48px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-align: center;
+}
+.wpnotif-col-title { /* takes remaining width */ }
+.wpnotif-col-title .wpnotif-title-link {
+    color: #1565c0;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    line-height: 1.45;
+}
+.wpnotif-col-title .wpnotif-title-link:hover { text-decoration: underline; }
+.wpnotif-ext-icon { width: 11px; height: 11px; flex-shrink: 0; opacity: .55; position: relative; top: 1px; }
+.wpnotif-date-chip { display: block; font-size: 11px; color: #9ca3af; margin-top: 2px; }
+
+.wpnotif-col-doc { width: 120px; text-align: center; }
+.wpnotif-dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background .12s;
+    white-space: nowrap;
+}
+.wpnotif-dl-btn:hover { background: #bbdefb; color: #0d47a1; text-decoration: none; }
+.wpnotif-dl-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.wpnotif-no-doc { color: #d1d5db; font-size: 13px; }
+
+/* NEW divider row */
+.wpnotif-new-divider-row td { padding: 0; border: none; background: transparent; }
+.wpnotif-new-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    background: #fff5f5;
+}
+.wpnotif-new-divider::before,
+.wpnotif-new-divider::after { content: ''; flex: 1; height: 1px; background: #e24b4a; opacity: .25; }
+.wpnotif-new-badge {
+    font-size: 10px;
+    font-weight: 700;
+    background: #e24b4a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: .07em;
+    white-space: nowrap;
+}
+
+/* Scrollable wrapper */
+.wpnotif-scrollable .wpnotif-full-wrap { max-height: 440px; overflow-y: auto; }
+.wpnotif-scrollable .wpnotif-full-wrap::-webkit-scrollbar { width: 5px; }
+.wpnotif-scrollable .wpnotif-full-wrap::-webkit-scrollbar-thumb { background: #e0e0e0; border-radius: 4px; }
+
+
+/* =====================================================================
+   SIDEBAR WIDGET  [wp_notifications_widget]
+
+   IMPORTANT: The PHP shortcode already outputs inline styles on every
+   row to guarantee the 2-column grid renders everywhere.
+   These classes layer on top for hover states and fine-tuning.
+   ===================================================================== */
+.wpnotif-widget-wrap {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13px;
+    font-family: inherit;
+}
+.wpnotif-widget-header {
+    padding: 10px 14px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e8e8e8;
+}
+.wpnotif-widget-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.wpnotif-widget-list { display: flex; flex-direction: column; }
+
+/* Row — 2-column grid (also set inline in PHP as fallback) */
+.wpnotif-widget-row {
+    display: grid !important;                          /* !important overrides any theme reset */
+    grid-template-columns: 28px 1fr !important;
+    gap: 8px;
+    align-items: start;
+    padding: 9px 14px;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background .1s;
+}
+.wpnotif-widget-row:last-child { border-bottom: none; }
+.wpnotif-widget-row:hover { background: #fafafa; }
+
+/* NEW rows — red highlight */
+.wpnotif-widget-row.wpnotif-is-new {
+    background: #fff5f5 !important;
+    border-left: 3px solid #e24b4a !important;
+    padding-left: 11px !important;
+}
+.wpnotif-widget-row.wpnotif-is-new:hover { background: #fff0f0 !important; }
+
+/* Column 1 */
+.wpnotif-widget-sno {
+    font-size: 11px;
+    font-weight: 600;
+    color: #c0c4cc;
+    padding-top: 2px;
+    text-align: right;
+}
+
+/* Column 2 */
+.wpnotif-widget-body { display: flex; flex-direction: column; gap: 2px; }
+
+.wpnotif-widget-item-title {
+    font-size: 13px;
+    color: #1f2937;
+    line-height: 1.4;
+}
+/* NEW rows: title turns red */
+.wpnotif-widget-row.wpnotif-is-new .wpnotif-widget-item-title {
+    color: #b91c1c;
+    font-weight: 500;
+}
+
+.wpnotif-widget-link {
+    font-size: 13px;
+    color: #1565c0;
+    text-decoration: none;
+    line-height: 1.4;
+}
+.wpnotif-widget-link:hover { text-decoration: underline; }
+
+.wpnotif-widget-date {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* NEW separator line */
+.wpnotif-widget-sep {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: #fff5f5;
+}
+.wpnotif-widget-sep::before,
+.wpnotif-widget-sep::after { content: ''; flex: 1; height: 1px; background: #e24b4a; opacity: .2; }
+.wpnotif-widget-sep span {
+    font-size: 9px;
+    font-weight: 700;
+    color: #e24b4a;
+    letter-spacing: .08em;
+}
+
+/* =====================================================================
+   Responsive
+   ===================================================================== */
+@media (max-width: 600px) {
+    .wpnotif-table thead th { padding: 8px 10px; }
+    .wpnotif-table td { padding: 10px; font-size: 13px; }
+    .wpnotif-col-doc { width: 90px; }
+    .wpnotif-dl-btn { padding: 4px 8px; font-size: 11px; }
+    .wpnotif-widget-row { padding: 8px 10px; }
+}
