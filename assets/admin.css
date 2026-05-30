@@ -1,183 +1,330 @@
 /* =========================================================
-   WP Latest Notifications — Admin Styles
+   WP Latest Notifications — Modern SaaS Admin Styles
    ========================================================= */
 
-.wpnotif-wrap { max-width: 1200px; padding-top: 1rem; }
-.wpnotif-wrap h1 { margin-bottom: 1rem; }
+/* Main layout container */
+.wpnotif-wrap {
+    max-width: 1400px;
+    padding: 1.5rem 2rem 2rem 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
-/* Two-column grid: form | list */
+.wpnotif-wrap h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Re-establishing the clean 2-column dashboard layout grid */
 .wpnotif-grid {
     display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 460px 1fr;
+    gap: 2rem;
     align-items: start;
 }
-@media (max-width: 900px) {
-    .wpnotif-grid { grid-template-columns: 1fr; }
+
+@media (max-width: 1100px) {
+    .wpnotif-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Card */
+/* Beautiful Modern Cards */
 .wpnotif-card {
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-}
-.wpnotif-card h2 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0 1.25rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #f0f0f0;
-    color: #1d2327;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Fields */
-.wpnotif-field { margin-bottom: 14px; }
+.wpnotif-card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Sleek Form Fields */
+.wpnotif-field {
+    margin-bottom: 1.25rem;
+}
+
 .wpnotif-field label {
     display: block;
     font-size: 13px;
-    font-weight: 500;
-    color: #50575e;
-    margin-bottom: 4px;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.5rem;
 }
-.wpnotif-field .required { color: #d63638; }
+
+.wpnotif-field .required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+/* Input Fields Overhaul */
 .wpnotif-field input[type=text],
 .wpnotif-field input[type=url],
 .wpnotif-field input[type=date] {
     width: 100%;
-    padding: 6px 10px;
+    height: 40px;
+    padding: 0 12px;
     font-size: 13px;
-    border: 1px solid #c3c4c7;
-    border-radius: 4px;
-    background: #fafafa;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
     box-sizing: border-box;
-    transition: border-color .15s;
+    transition: all 0.2s ease-in-out;
 }
+
 .wpnotif-field input:focus {
-    border-color: #2271b1;
-    background: #fff;
+    border-color: #3b82f6;
+    background: #ffffff;
     outline: none;
-    box-shadow: 0 0 0 1px #2271b1;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
+
 .wpnotif-field .description {
-    font-size: 11px;
-    color: #8c8f94;
-    margin-top: 4px;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 0.5rem;
+    line-height: 1.4;
 }
 
-.wpnotif-link-row {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-}
-.wpnotif-link-row input { flex: 1; }
-
+/* Aligned Actions and Buttons */
+.wpnotif-link-row,
 .wpnotif-doc-row {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     align-items: center;
-    flex-wrap: wrap;
 }
 
+.wpnotif-link-row input {
+    flex: 1;
+}
+
+/* Standardizing the Secondary / Utility Buttons */
+.wpnotif-card .button:not(.button-primary) {
+    height: 40px;
+    padding: 0 14px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #475569;
+    font-weight: 500;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.15s ease;
+}
+
+.wpnotif-card .button:not(.button-primary):hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #1e293b;
+}
+
+/* Document Upload Area Customizations */
 .wpnotif-doc-preview {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 8px;
-    padding: 7px 10px;
-    background: #edf4fb;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #2271b1;
+    margin-top: 0.75rem;
+    padding: 10px 14px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #2563eb;
+    font-weight: 500;
 }
-.wpnotif-doc-preview .dashicons { font-size: 16px; width:16px; height:16px; color: #2271b1; }
 
-.wpnotif-submit-row { margin-top: 1rem; display: flex; gap: 8px; align-items: center; }
+.wpnotif-doc-preview .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #2563eb;
+}
 
-/* Admin notification list */
+/* Main Call-to-Action Primary Button */
+.wpnotif-submit-row {
+    margin-top: 1.5rem;
+}
+
+.wpnotif-submit-row .button-primary {
+    height: 42px;
+    padding: 0 20px;
+    background: #2563eb !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-shadow: none !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2), 0 2px 4px -2px rgba(37, 99, 235, 0.2) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.wpnotif-submit-row .button-primary:hover {
+    background: #1d4ed8 !important;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3), 0 4px 6px -4px rgba(37, 99, 235, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+/* Admin Notification List Container */
+.wpnotif-count {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    margin-left: 4px;
+}
+
 .wpnotif-admin-list {
-    max-height: 480px;
+    max-height: 600px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    padding-right: 4px;
+    gap: 12px;
+    padding-right: 6px;
 }
-.wpnotif-admin-list::-webkit-scrollbar { width: 4px; }
-.wpnotif-admin-list::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
 
+/* Styling the item rows like modern list group items */
 .wpnotif-admin-row {
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
-    padding: 10px 12px;
-    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
+    position: relative;
+    transition: all 0.2s ease;
 }
+
+.wpnotif-admin-row:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
 .wpnotif-admin-row.is-new {
-    border-left: 3px solid #d63638;
+    border-left: 4px solid #ef4444;
     background: #fff8f8;
 }
 
+/* Row Meta Badges and Dates */
 .wpnotif-admin-row-meta {
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
 .wpnotif-date {
-    font-size: 11px;
-    color: #8c8f94;
-    font-weight: 500;
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 600;
 }
+
 .wpnotif-pill {
-    font-size: 10px;
-    padding: 2px 7px;
-    border-radius: 20px;
-    font-weight: 500;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
-.wpnotif-pill.pdf { background: #e8f5e9; color: #2e7d32; }
-.wpnotif-pill.link { background: #e3f2fd; color: #1565c0; }
+
+.wpnotif-pill.pdf {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.wpnotif-pill.link {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
 
 .wpnotif-admin-row-title {
-    font-size: 13px;
-    color: #1d2327;
-    line-height: 1.4;
-}
-.wpnotif-admin-row-actions {
-    display: flex;
-    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f172a;
+    line-height: 1.5;
 }
 
-/* NEW separator in admin list */
+/* Inline row item action buttons */
+.wpnotif-admin-row-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
+}
+
+.wpnotif-admin-row-actions .button {
+    height: 30px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+    border-radius: 6px !important;
+    line-height: 28px !important;
+}
+
+.wpnotif-admin-row-actions .button-link-delete {
+    color: #ef4444 !important;
+}
+
+.wpnotif-admin-row-actions .button-link-delete:hover {
+    background: #fef2f2 !important;
+    border-color: #fca5a5 !important;
+}
+
+/* Elegant Red Separator Design for New Items */
 .wpnotif-new-sep {
     text-align: center;
     position: relative;
-    margin: 4px 0;
+    margin: 1rem 0;
 }
+
 .wpnotif-new-sep::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0; right: 0;
+    left: 0;
+    right: 0;
     height: 1px;
-    background: #d63638;
-    opacity: .25;
-}
-.wpnotif-new-sep span {
-    position: relative;
-    background: #fff;
-    padding: 0 8px;
-    font-size: 10px;
-    font-weight: 600;
-    color: #d63638;
-    letter-spacing: .06em;
+    background: #ef4444;
+    opacity: 0.2;
 }
 
-.wpnotif-count {
-    font-size: 13px;
-    font-weight: 400;
-    color: #8c8f94;
+.wpnotif-new-sep span {
+    position: relative;
+    background: #ffffff;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ef4444;
+    letter-spacing: 0.05em;
+    border: 1px solid #fca5a5;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
-.wpnotif-empty { color: #8c8f94; font-size: 13px; padding: 1rem 0; }
+
+.wpnotif-empty {
+    color: #94a3b8;
+    font-size: 14px;
+    padding: 2rem 0;
+    text-align: center;
+}
