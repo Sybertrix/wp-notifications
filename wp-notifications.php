@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WP Latest Notifications
- * Plugin URI:  https://360digitalamrketerjay.in/wp-notifications
+ * Plugin URI:  https://360digitalmarketerjay.in/wp-notifications
  * Description: Scrollable notification list with NEW badge, hyperlink & document/PDF support. Full-page 3-column shortcode + 2-column sidebar widget.
  * Version:     1.0.1
  * Author:      Jayant Mallick
@@ -37,6 +37,11 @@ function wpnotif_activate() {
     dbDelta( $sql );
     add_option( 'wpnotif_new_threshold', 2 );
     add_option( 'wpnotif_display_limit', 6 );
+    add_option( 'wpnotif_widget_title', 'Latest Updates' );
+add_option( 'wpnotif_font_family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' );
+add_option( 'wpnotif_font_size', '14' );
+add_option( 'wpnotif_text_color', '#1e293b' );
+add_option( 'wpnotif_custom_title', 'Latest Notifications' );
 }
 
 /* =====================================================================
@@ -64,6 +69,19 @@ function wpnotif_admin_assets( $hook ) {
 add_action( 'wp_enqueue_scripts', 'wpnotif_frontend_assets' );
 function wpnotif_frontend_assets() {
     wp_enqueue_style( 'wpnotif-front', WPNOTIF_URL . 'assets/frontend.css', [], WPNOTIF_VERSION );
+
+    $font_fam = get_option( 'wpnotif_font_family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' );
+    $font_sz = get_option( 'wpnotif_font_size', '14' );
+    $tx_color = get_option( 'wpnotif_text_color', '#1e293b' );
+
+    $custom_css = "
+        .wpnotif-full-wrap, .wpnotif-widget-wrap {
+            font-family: {$font_fam} !important;
+            font-size: {$font_sz}px !important;
+            color: {$tx_color} !important;
+        }
+    ";
+    wp_add_inline_style( 'wpnotif-front', $custom_css );
 }
 
 /* =====================================================================
@@ -120,7 +138,7 @@ function wpnotif_admin_page() {
     $threshold = (int) get_option( 'wpnotif_new_threshold', 2 );
     ?>
     <div class="wrap wpnotif-wrap">
-        <h1 class="wp-heading-inline">📣 Notifications</h1>
+    <h1 class="wp-heading-inline">Latest Notifications</h1>
         <hr class="wp-header-end">
         <div class="wpnotif-grid">
 
@@ -228,40 +246,54 @@ function wpnotif_settings_page() {
     if ( isset( $_POST['wpnotif_settings_save'] ) ) {
         check_admin_referer( 'wpnotif_settings' );
         update_option( 'wpnotif_new_threshold', absint( $_POST['wpnotif_new_threshold'] ) );
-        update_option( 'wpnotif_display_limit',  absint( $_POST['wpnotif_display_limit'] ) );
-        echo '<div class="notice notice-success"><p>Settings saved.</p></div>';
+        update_option( 'wpnotif_display_limit', absint( $_POST['wpnotif_display_limit'] ) );
+        update_option( 'wpnotif_widget_title', sanitize_text_field( $_POST['wpnotif_widget_title'] ) );
+        update_option( 'wpnotif_font_family', sanitize_text_field( $_POST['wpnotif_font_family'] ) );
+        update_option( 'wpnotif_font_size', absint( $_POST['wpnotif_font_size'] ) );
+        update_option( 'wpnotif_text_color', sanitize_hex_color( $_POST['wpnotif_text_color'] ) );
+        echo '<div class="notice notice-success"><p>Design settings updated.</p></div>';
     }
-    $threshold = (int) get_option( 'wpnotif_new_threshold', 2 );
-    $limit     = (int) get_option( 'wpnotif_display_limit',  6 );
+
+    $title = get_option( 'wpnotif_widget_title', 'Latest Updates' );
+    $font_fam = get_option( 'wpnotif_font_family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' );
+    $font_sz = get_option( 'wpnotif_font_size', '14' );
+    $tx_color = get_option( 'wpnotif_text_color', '#1e293b' );
     ?>
     <div class="wrap wpnotif-wrap">
-        <h1>Notification Settings</h1>
+        <h1>Design & Configuration</h1>
         <form method="post">
             <?php wp_nonce_field('wpnotif_settings'); ?>
             <input type="hidden" name="wpnotif_settings_save" value="1">
             <table class="form-table">
                 <tr>
-                    <th><label for="wpnotif_new_threshold">NEW badge threshold</label></th>
+                    <th><label>Widget Title</label></th>
+                    <td><input type="text" name="wpnotif_widget_title" value="<?php echo esc_attr($title); ?>" class="regular-text"></td>
+                </tr>
+                <tr>
+                    <th><label>Font Family</label></th>
                     <td>
-                        <input type="number" id="wpnotif_new_threshold" name="wpnotif_new_threshold"
-                               value="<?php echo $threshold; ?>" min="1" max="20" class="small-text">
-                        <p class="description">Show red NEW badge separator after the top N most-recent notifications.</p>
+                        <select name="wpnotif_font_family">
+                            <option value="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" <?php selected($font_fam, "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"); ?>>Modern Sans</option>
+                            <option value="'Helvetica Neue', Helvetica, Arial, sans-serif" <?php selected($font_fam, "'Helvetica Neue', Helvetica, Arial, sans-serif"); ?>>Classic Helvetica</option>
+                            <option value="Georgia, serif" <?php selected($font_fam, "Georgia, serif"); ?>>Elegant Serif</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="wpnotif_display_limit">Display limit</label></th>
-                    <td>
-                        <input type="number" id="wpnotif_display_limit" name="wpnotif_display_limit"
-                               value="<?php echo $limit; ?>" min="1" max="50" class="small-text">
-                        <p class="description">Total rows shown in the full-page table and sidebar widget.</p>
-                    </td>
+                    <th><label>Font Size (px)</label></th>
+                    <td><input type="number" name="wpnotif_font_size" value="<?php echo $font_sz; ?>" class="small-text"></td>
+                </tr>
+                <tr>
+                    <th><label>Text Color</label></th>
+                    <td><input type="color" name="wpnotif_text_color" value="<?php echo esc_attr($tx_color); ?>"></td>
                 </tr>
             </table>
-            <?php submit_button('Save Settings'); ?>
+            <?php submit_button(); ?>
         </form>
     </div>
     <?php
 }
+
 
 /* =====================================================================
    6. SHORTCODE — full-page 3-column table  [wp_notifications]
