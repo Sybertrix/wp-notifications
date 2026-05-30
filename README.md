@@ -1,164 +1,57 @@
-# WP Latest Notifications — WordPress Plugin
+=== Latest Notifications Board ===
+Contributors: Sybertrix
+Donate link: https://360digitalmarketerjay.in/latest_notification_board
+Tags: notifications, bulletin, board, secure feed, asset manager
+Requires at least: 5.8
+Tested up to: 6.9
+Requires PHP: 7.4
+Stable tag: 1.1.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A clean, self-contained WordPress plugin that powers a scrollable notification board with:
+An enterprise-grade, highly secure notification delivery system optimized for global distribution compliance.
 
-- ✅ Scrollable list showing the latest 5–6 (configurable) notifications
-- ✅ Red **NEW** badge line after the top N date-sorted entries
-- ✅ Hyperlink embedded in title (opens in new tab)
-- ✅ Document / PDF upload via WordPress media library, with a Download button
-- ✅ **Full-page shortcode** — 3-column table (S.No | Title | Download)
-- ✅ **Sidebar widget** — 2-column compact list (S.No | Title + date)
-- ✅ Classic Widgets support + Gutenberg-compatible via shortcode block
-- ✅ REST API endpoint for headless use
+== Description ==
 
+An enterprise notification delivery system optimized for global security compliance. Manage global board titles, typography stacks, and primary brand colors natively from your dashboard.
 
-## File Structure
+*   **Dynamic Customization Console:** Change the global board title, font styles, text sizing, and brand colors directly from the admin interface.
+*   **Premium Shortcode Pagination:** Automatically splits your full-page notifications into clean, animated paginated navigation screens.
+*   **Smart New Badges:** Highlights recent items with a modern, dynamic divider based on your custom threshold values.
+*   **Document Attachment Engine:** Upload and connect PDFs, DOCX, or spreadsheet nodes natively via the WordPress Media Library with crisp download interfaces.
 
-```
-wp-notifications/
-├── wp-notifications.php   ← main plugin file
-└── assets/
-    ├── admin.css
-    ├── admin.js
-    └── frontend.css
-```
+== Installation ==
 
+1. Upload the `latest-notifications-board/` directory into your server's `/wp-content/plugins/` environment folder[cite: 4].
+2. Navigate to **Plugins -> Installed Plugins** in your WordPress dashboard and choose Activate[cite: 4].
+3. The system will automatically build the secure database tracking architectures[cite: 4].
 
-## Installation
+== Frequently Asked Questions ==
 
-1. Upload the `wp-notifications/` folder to `/wp-content/plugins/`
-2. Activate via **Plugins → Installed Plugins**
-3. On first activation the plugin creates a `wp_notifications` table in your database automatically
+= How do I display the notification board? =
+Simply paste the shortcode `[wp_notifications]` on any page or post[cite: 3, 4].
 
+= Can I use it in a sidebar? =
+Yes, use the compact shortcode `[wp_notifications_widget]` or drag the "Latest Notifications Board Segment" widget into your sidebar under Appearance -> Widgets[cite: 3, 4, 5].
 
-## Admin Usage
+== Screenshots ==
 
-Navigate to **Notifications** in the WordPress admin sidebar.
+1. The modern SaaS-style plugin administration panel dashboard layout.
+2. The user-facing notification board running custom typography and color variables.
 
-### Adding a notification
-| Field | Description |
-|-------|-------------|
-| Title | The notification text (required) |
-| Date  | Publication date (required, used for sorting & NEW badge) |
-| Link URL | Optional. If set, the title becomes a hyperlink |
-| Document / PDF | Optional. Opens the WP Media Library — pick any uploaded file |
+== Changelog ==
 
-### NEW badge threshold
-The admin list shows a dividing line after the top N entries (default: 2). Change this under **Notifications → Settings**.
+= 1.1.0 =
+* Added dynamic dashboard typography customizer options.
+* Implemented full responsive public shortcode pagination systems.
 
+= 1.0.1 =
+* Patched script asset hook timings for widget visibility.
 
-## Shortcodes
+= 1.0.0 =
+* Initial framework compilation launch release.
 
-### Full-page 3-column table
+== Upgrade Notice ==
 
-```
-[wp_notifications]
-```
-
-| Attribute | Default | Description |
-|-----------|---------|-------------|
-| `limit`   | 6       | Max rows displayed |
-| `new`     | 2       | Rows before the NEW badge separator |
-
-Example:
-```
-[wp_notifications limit="8" new="3"]
-```
-
-Wrap in a div with class `wpnotif-scrollable` to make the table scroll vertically:
-```html
-<div class="wpnotif-scrollable">
-  [wp_notifications limit="10"]
-</div>
-```
-
-### Sidebar / compact 2-column widget
-
-```
-[wp_notifications_widget]
-```
-
-| Attribute | Default | Description |
-|-----------|---------|-------------|
-| `limit`   | 5       | Max rows |
-| `new`     | 2       | Rows before the NEW separator |
-| `title`   | Notifications | Header text |
-
-Example:
-```
-[wp_notifications_widget limit="5" title="Latest Updates"]
-```
-
-
-## Classic Widget
-
-Go to **Appearance → Widgets** and drag **Latest Notifications** into any sidebar. Configure title and item count there.
-
-
-## REST API
-
-Fetch notifications as JSON (useful for AJAX or headless setups):
-
-```
-GET /wp-json/wp-notifications/v1/list?limit=6
-```
-
-Response:
-```json
-[
-  {
-    "id": 1,
-    "title": "Annual Report 2025 Released",
-    "notif_date": "2025-05-28",
-    "link_url": "https://example.com/report",
-    "doc_url": "https://example.com/wp-content/uploads/report.pdf",
-    "doc_name": "Annual_Report_2025.pdf"
-  }
-]
-```
-
-
-## Customisation
-
-All frontend colours and spacing are in `assets/frontend.css`. Key variables to tweak:
-
-- `.wpnotif-is-new` — left border colour on NEW rows (`#e24b4a`)
-- `.wpnotif-new-badge` — the red NEW pill
-- `.wpnotif-dl-btn` — the download button (blue by default)
-- `.wpnotif-table thead tr` — table header background
-
-
-## Requirements
-
-- WordPress 5.5+
-- PHP 7.4+
-- MySQL 5.6+ / MariaDB 10+
-
-# Terms & Conditions
---------------------------
-## WP Latest Notifications
-
-*   **Contributors:** Jayant Mallick[cite: 5]
-*   **Plugin URI:** https://360digitalmarketerjay.in[cite: 5]
-*   **Tags:** notifications, bulletin, board, secure feed, asset manager
-*   **Requires at least:** 5.8
-*   **Tested up to:** 6.9
-*   **Stable tag:** 1.1.0
-*   **License:** GPLv2 or later[cite: 5]
-*   **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
-
-An enterprise notification delivery system optimized for global security compliance.
-
-## Terms & Operational Distribution Policy
-
-By deploying this plugin on a live environment, you agree to the following operational parameters:
-
-1. **Security Integrity Policy:** This plugin features a continuous runtime asset integrity validator. Unauthorized modifications to the core distribution file trees (`wp-notifications.php` or asset style files) will invoke a safe validation halt, freezing execution to prevent exploit injections[cite: 4, 5].
-2. **Data Processing and Privacy Compliance:** This plugin processes records entirely within local databases on your server infrastructure[cite: 4, 5]. It does not execute remote telemetry callbacks or track external user behavior data, making it natively compliant with international privacy frameworks (GDPR and CCPA)[cite: 4, 5].
-3. **Distribution Rules:** Redistribution or custom modifications of this code structure must preserve developer attribute markers pointing to Jayant Mallick as the initial framework architect[cite: 5].
-
-## Installation Setup
-
-1. Extract the asset package directory block into your `/wp-content/plugins/` environment folder[cite: 4].
-2. Access the administrative controls menu area and trigger activation[cite: 4].
-3. Embed your notification board anywhere on your pages using the primary tracking shortcode: `[wp_notifications]`[cite: 3, 4].
+= 1.1.0 =
+This update adds the design customizer database modules. Upgrading is highly recommended for design flexibility.
